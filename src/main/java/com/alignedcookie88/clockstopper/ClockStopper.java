@@ -25,7 +25,7 @@ public class ClockStopper implements ModInitializer {
             dispatcher.register(
                     literal("clockstopper").then(
                             literal("stop")
-                                    .requires(source -> source.hasPermissionLevel(4))
+                                    .requires(requirePermissionLevel(ADMINS_CHECK))
                                     .executes(
                                     context -> {
                                         if (forceStopTicks) {
@@ -42,7 +42,7 @@ public class ClockStopper implements ModInitializer {
                             )
                     ).then(
                             literal("start")
-                                    .requires(source -> source.hasPermissionLevel(4))
+                                    .requires(requirePermissionLevel(ADMINS_CHECK))
                                     .executes(
                                     context -> {
                                         if (!forceStopTicks) {
